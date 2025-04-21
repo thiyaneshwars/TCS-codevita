@@ -1,0 +1,42 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        int test = sc.nextInt();
+        int t = 0;
+        while (t != test) {
+            int n = sc.nextInt();
+            int arr[] = new int[n];
+            int gift[] = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+                gift[i]=1;
+            }
+            for(int i=1;i<n;i++){
+                if(arr[i]>arr[i-1]){
+                    gift[i]=gift[i-1]+1;
+                }
+                else{
+                    gift[i]=1;
+                }
+            }
+            for(int i=n-2;i>=0;i--){
+                if(arr[i]>arr[i+1]){
+                    if(gift[i]<=gift[i+1])
+                    gift[i]=gift[i+1]+1;
+                }
+            }
+           int sum=0;
+            for(int i=0;i<n;i++){
+                sum+=(gift[i]);
+            }
+            System.out.println(sum);
+            t++;
+        }
+    }
+}
